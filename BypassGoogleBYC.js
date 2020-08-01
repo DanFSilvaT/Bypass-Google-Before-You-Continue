@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Bypass Google's "Before You Continue"
 // @namespace   https://github.com/Dilxe/
-// @version     1
+// @version     1.1
 // @description Bypasses Google's "Before You Continue" confirmation dialog that stops the user from "using it's services" by automatically redirecting the same search to another Google domain. (Only tested on Firefox)
 // @author      Dilxe 
 // @include     http*://www.google.*/*
@@ -17,10 +17,10 @@ function Be4UContnu()
 {
   var checkBYC = document.getElementById("lb");
   var searchQuery = document.URL.split("/",4);
-  let googleDomains = ['.co.jp', '.co.uk', '.ru', '.es', '.pt', '.td', '.cn', '.g.cn', '.ch', '.de', '.co.cr', '.com.cu', '.fr', '.com.hk', '.ie', '.co.kr', '.com.mx', '.ne', '.com.ng', '.no', '.co.nz', '.pl', '.co.ve', '.com.ua']
+  let googleDomains = ['.co.jp', '.co.uk', '.ru', '.es', '.pt', '.td', '.cn', '.ch', '.de', '.co.cr', '.com.cu', '.fr', '.com.hk', '.ie', '.co.kr', '.com.mx', '.ne', '.com.ng', '.no', '.co.nz', '.pl', '.co.ve', '.com.ua']
   
 
-  if (checkBYC.hasChildNodes())
+  if (checkBYC.childNodes.length > 1)
     window.location.replace("https://www.google" + googleDomains[Math.floor(Math.random() * googleDomains.length)] + "/" + searchQuery[searchQuery.length-1]);
 }
 
